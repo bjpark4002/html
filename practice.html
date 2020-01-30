@@ -2,7 +2,11 @@
 
 <html>
     <head>
-
+        <title> Bumjin's Practice Web Page </title>
+        <meta name = "description ", content = " practice materials"/>
+        <meta name = "keywords", content  ="body, list, iframe"/>
+        <meta http-equiv="Content-Type" content ="text/html;charset=utf-8">
+        <!-- <meta http-equiv="refresh" content="2;url=http://opentutorials.org/"> after 2 seconds, it redirects to url. -->
     </head>
     <body>
 
@@ -50,14 +54,58 @@
 
         <table border = "1">
             <tr>
-                <td> one </td> <td> two </td>
+                <th>title 1</th><th> title 2</th> <th>title 3</th>
+            </tr>
+            <tr>
+                <td> one </td> <td> two </td> <td rowspan="2"> ?</td>
             </tr>
             <tr>
                 <td> 1  </td> <td> 2 </td>
             </tr>
+            <tr>
+                <td colspan = "3"> integration</td>
+            </tr>
 
             
         </table>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <form action="url" method="get">
+            Nickname : 
+            <input type="text" name="nickname">
+            <!-- <input type="text" name="nickname" readonly="readonly" disabled ="disabled" value="Place Holder "> this is used when you diable input-->
+            <br/>
+            Password  : 
+            <input type="password" name="password">
+            <br/>
+            <input type = "submit">
+        </form>
+
+        <form action="url" method="get">
+            textarea test
+            <textarea rows= '10', cols='10'>ssssss</textarea>
+            <br/>
+            <br/>
+            <br/>
+            Family members<br/>
+            <input type="radio" name = "member" value = " Camila" checked= "checked"> Camila
+            <input type="radio" name = "member" value = " Bumjin" > Bumjin
+            <br/>
+            <br/>
+            <br/>
+
+            Family Memberssss<br/>
+            <select name = " Family Members">
+                <option value = "Camila" selected = "selected" > Camila</option>
+                <option value = "Bumjin" > Bumjin</option>
+            </select>
+        </form>
     </body>
 
 
