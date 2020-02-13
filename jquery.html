@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <!-- <script src="functions.js"></script> -->
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+</head>
+
+  <body>
+      <h1>sdgsdgs</h1>
+
+
+
+      <table id='jasonTable'>
+        <tr>
+            <th>firstName</th>
+            <th>lastname</th>
+            <th>email</th>
+            <th>location</th>
+            <th>phone</th>
+            <th>address</th>
+            <th>marks</th>
+        </tr>
+
+      </table>
+      <script>
+        $(document).ready(function(){
+          $.getJSON('./jquery_data.json',function(data){
+            var tmp = '';
+            for(var i = 0, len = data.length ; i < len ; i++){
+              
+                tmp += '<tr>';
+                tmp += '<td>'+data[i].firstname+'</td>';
+                tmp += '<td>'+data[i].lastname+'</td>';
+                tmp += '<td>'+data[i].email+'</td>';
+                tmp += '<td>'+data[i].location+'</td>';
+                tmp += '<td>'+data[i].phone+'</td>';
+                tmp += '<td> Communication: '+data[i].address.communication+ ' permanent: '+ data[i].address.permanent+  '</td>';
+                
+                tmp += '<td>'+ 'English:'+data[i].marks.english+' Science:' +data[i].marks.science + ' Computers:' +data[i].marks.computers+' Hardware:'+data[i].marks.hardware  + '</td>';
+                tmp += '</tr>';
+
+
+             }
+            $('#jasonTable').append(tmp);
+          });
+        });
+
+
+
+        // $(document).ready(function(){
+        //   $.getJSON("https://raw.githubusercontent.com/Senior-Goya/jsonTest/master/TestJson.json",function(data){
+        //     // $.getJSON("./jquery_data.json",function(data){
+        //     var tmp='';
+        //     $.each(data,function(key,value){
+        //       console.log(value.firstname);
+        //       // tmp += '<tr>';
+        //       // tmp += '<td>'+value.firstname+'</td>';
+        //     })
+        //   })
+        // }
+
+      </script>
+
+  </body>
+
+</html> 
