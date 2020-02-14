@@ -17,39 +17,77 @@
                     url: "./jquery_data.json",
                     method: "GET",
                     dataType : "Json",
+
                     success: function(data){
-                        $("#datatable").dataTable({
+                        var datatableinst= $("#datatable").DataTable({
                             data: data,
+                            'scrollY':600,
                             columns: [
-                                 {'data': 'firstname'},
+                                 {'data': 'firstname','render': function(input){
+                            if(!input){
+                                return 'N/A';
+                            }else{
+                                return input
+                            }
+                        }},
                                 {'data': 'lastname'},
-                                {'data': 'email'},
+                                {'data': 'email',
+                                  'searchable' :false},
                                 {'data': 'location'},
                                 {'data': 'phone'},
-                                {'data': 'address.communication'},
-                                {'data': 'address.permanent'},
-                                {'data': 'marks.english'},
-                                {'data': 'marks.science'},
-                                {'data': 'marks.computers'},
-                                {'data': 'marks.hardware'}
+                                {
+                                    'data': 'address',
+                                    'render': function(addCand){
+                                        // var temp = addCand.communication
+                                        return "[Communication]: "+addCand.communication +"<br> [Permanent]: "+addCand.permanent;
+                                    },
+                                  'searchable' :false
+                                
+                                },
+                    //             {'data': 'address.communication'},
+                    //             {'data': 'address.permanent'},
+                                {
+                                    'data': 'marks','render': function(marks){
+                                    return "English: "+ marks.english +"<br>Science: "+marks.science+"<br>Computers: "+marks.computers+"<br>hardware: "+marks.hardware;
+                                    },
+                                  'searchable' :false
+                                 }
+                    //             {'data': 'marks.english'},
+                    //             {'data': 'marks.science'},
+                    //             {'data': 'marks.computers'},
+                    //             {'data': 'marks.hardware'}
 
                             ]
-                            // ,
-                            // select: true,
-                            // buttons: [
-                            //     { extend: "create", editor: editor },
-                            //     { extend: "edit",   editor: editor },
-                            //     { extend: "remove", editor: editor }
-                            // ]
                         })
                     }
+                })
+
+                $('.showHideColumn').on('click',function() {
+                    var tableColumn  = datatableinst.column($(this).after('data-columnindex'));
+                    tableColumn.visible(!tableColumn.visible());
                 })
             })
         
         </script>
+        <style>
+            .showHideColumn{
+                cursor : pointer;
+                color : blue;
+            }
+        </style>
     </head>
     <body>
-        <div style = "width: 600px">
+        <div style="padding:5px; padding-left:0px">
+        <b>Show / Hide Columns : </b>
+        <a class="showHideColumn" data-columnindex="0">FirstName</a> -
+        <a class="showHideColumn" data-columnindex="1">LastName</a> -
+        <a class="showHideColumn" data-columnindex="2">Email</a> -
+        <a class="showHideColumn" data-columnindex="3">Location</a> -
+        <a class="showHideColumn" data-columnindex="4">Phone</a> -
+        <a class="showHideColumn" data-columnindex="5">Address</a> -
+        <a class="showHideColumn" data-columnindex="6">Marks</a> -
+        </div>
+        <div style = "width: 1400px; border: 1px solid black; padding:3px">
             <table id = "datatable">
                 <thead>
                     <tr>
@@ -58,15 +96,37 @@
                         <th>Email</th>
                         <th>Location</th>
                         <th>Phone</th>
-                        <th>Education address</th>
-                        <th>Permanent address</th>
-                        <th>Marks-English</th>
+                        <th>Address</th>
+                        <!-- <th>Education address</th>
+                        <th>Permanent address</th> -->
+                        <th>Marks</th>
+                        <!-- <th>Marks-English</th>
                         <th>Marks-science</th>
                         <th>Marks-computers</th>
-                        <th>Marks-hardware</th>
+                        <th>Marks-hardware</th> -->
 
                     </tr>
                 </thead>
+                <tfoot>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Location</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+
+                        <!-- <th>Education address</th>
+                        <th>Permanent address</th> -->
+                        <th>Marks</th>
+
+                        <!-- <th>Marks-English</th>
+                        <th>Marks-science</th>
+                        <th>Marks-computers</th>
+                        <th>Marks-hardware</th> -->
+
+                    </tr>
+                </tfoot>
             </table>
         </div>
 
