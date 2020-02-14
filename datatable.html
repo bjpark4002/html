@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+
+    </head>
+    <body>
+
+        <!-- <th>firstName</th>
+        <th>lastname</th>
+        <th>email</th>
+        <th>location</th>
+        <th>phone</th>
+        <th>address</th>
+        <th>marks</th>
+         -->
+        <table id="table_id" class="display">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>email</th>
+                    <th>location</th>
+                    <th>phone</th>
+                    <th>address</th>
+                    <th>marks</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+
+        <script>
+            $(document).ready( function () {
+
+            //     $.ajax({
+            //       "url": "jquery_data.json",
+            //       "success": function(data){
+            //         $('table_id').dataTable({
+            //           data: data,
+            //           columns: [
+            //             {'data': 'firstname'},
+            //             {'data': 'lastname'},
+            //             {'data': 'email'},
+            //             {'data': 'location'},
+            //             {'data': 'phone'},
+            //             {'data': 'address'},
+            //             {'data': 'marks'}
+            //           ]
+            //         })
+            //         localStorage.setItem("students", JSON.stringify(data));
+            //       }    
+            //     })
+                
+
+                $.ajax({
+                    url:"./jquery_data.json",
+                    method : "GET",
+                    dataType: "json",
+                    
+                    sucess: function(data){
+
+                        console.log("hgagasg")
+                        $("#table_id").dataTable({
+                            data:data,
+                            columns: [
+                                {'data':'firstname'},
+                                {'data':'lastname'},
+                                {'data':'email'},
+                                {'data':'location'},
+                                {'data':'phone'},
+                                {'data':'address'},
+                                {'data':'marks'}
+                            ]
+                        })
+                    }
+                })
+                // $('#table_id').DataTable();
+                
+
+        //         $.getJSON('./jquery_data.json',function(data){
+        //     var tmp = '';
+        //     for(var i = 0, len = data.length ; i < len ; i++){
+              
+        //         tmp += '<tr>';
+        //         tmp += '<td>'+data[i].firstname+'</td>';
+        //         tmp += '<td>'+data[i].lastname+'</td>';
+        //         tmp += '<td>'+data[i].email+'</td>';
+        //         tmp += '<td>'+data[i].location+'</td>';
+        //         tmp += '<td>'+data[i].phone+'</td>';
+        //         tmp += '<td> Communication: '+data[i].address.communication+ ' permanent: '+ data[i].address.permanent+  '</td>';
+        //         tmp += '<td>'+ 'English:'+data[i].marks.english+' Science:' +data[i].marks.science + ' Computers:' +data[i].marks.computers+' Hardware:'+data[i].marks.hardware  + '</td>';
+        //         tmp += '</tr>';
+        //      }
+        //     $('#table_id').append(tmp);
+        //   });
+            } );
+
+            
+        </script>
+    </body>
+</html>

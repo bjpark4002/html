@@ -4,11 +4,23 @@
   <head>
     <!-- <script src="functions.js"></script> -->
     <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
   <body>
       <h1>sdgsdgs</h1>
+
+      <input id="browserID" list="browsers" name="browser">
+      <datalist id = "browsers">
+        <option value="10"> 
+        <option value="20"> 
+        <option value="30">
+        <option value="40"> 
+        <option value="50"> 
+        <option value="100"> 
+      </datalist>
+      <!-- <input type="submit"> -->
 
 
 
@@ -25,6 +37,11 @@
 
       </table>
       <script>
+
+      </script>
+      <script>
+
+
         $(document).ready(function(){
           $.getJSON('./jquery_data.json',function(data){
             var tmp = '';
@@ -37,7 +54,6 @@
                 tmp += '<td>'+data[i].location+'</td>';
                 tmp += '<td>'+data[i].phone+'</td>';
                 tmp += '<td> Communication: '+data[i].address.communication+ ' permanent: '+ data[i].address.permanent+  '</td>';
-                
                 tmp += '<td>'+ 'English:'+data[i].marks.english+' Science:' +data[i].marks.science + ' Computers:' +data[i].marks.computers+' Hardware:'+data[i].marks.hardware  + '</td>';
                 tmp += '</tr>';
 
