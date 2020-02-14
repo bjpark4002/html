@@ -19,7 +19,7 @@
                     dataType : "Json",
 
                     success: function(data){
-                        var datatableinst= $("#datatable").DataTable({
+                        var datatableinstance = $("#datatable").DataTable({
                             data: data,
                             'scrollY':600,
                             columns: [
@@ -44,28 +44,23 @@
                                   'searchable' :false
                                 
                                 },
-                    //             {'data': 'address.communication'},
-                    //             {'data': 'address.permanent'},
                                 {
                                     'data': 'marks','render': function(marks){
                                     return "English: "+ marks.english +"<br>Science: "+marks.science+"<br>Computers: "+marks.computers+"<br>hardware: "+marks.hardware;
                                     },
                                   'searchable' :false
                                  }
-                    //             {'data': 'marks.english'},
-                    //             {'data': 'marks.science'},
-                    //             {'data': 'marks.computers'},
-                    //             {'data': 'marks.hardware'}
-
                             ]
                         })
+
+                        $('.showHideColumn').on('click',function() {
+                                var tableColumn  = datatableinstance.column($(this).after('data-columnindex'));
+                                tableColumn.visible(!tableColumn.visible());
+                })
                     }
                 })
 
-                $('.showHideColumn').on('click',function() {
-                    var tableColumn  = datatableinst.column($(this).after('data-columnindex'));
-                    tableColumn.visible(!tableColumn.visible());
-                })
+                
             })
         
         </script>
